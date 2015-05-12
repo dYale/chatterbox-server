@@ -1,0 +1,20 @@
+function permutations (choicesArray){
+	if(choicesArray.length === 0) return [];
+	if(choicesArray.length === 1) return choicesArray[0]; 
+
+	var choices = choicesArray[0];
+	var otherPerms = permutations( choicesArray.slice(1))
+
+	return choices.map(function (c){
+		return otherPerms.map(function(p) { return c+p})
+
+	}).reduce(concat)
+}
+
+function concat(a,b){
+	return a.concat(b);
+}
+
+
+
+function identity(x){ return x}
